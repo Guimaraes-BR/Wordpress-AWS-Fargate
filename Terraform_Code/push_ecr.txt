@@ -1,0 +1,14 @@
+resource "null_resource" "docker_packaging" {
+
+  provisioner "local-exec" {
+    command = <<EOF
+	    aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 659604661163.dkr.ecr.us-west-2.amazonaws.com
+	    gradle build -p wordpress_dev 
+	    docker build -t "docker tag wordpress_dev:latest 659604661163.dkr.ecr.us-west-2.amazonaws.com/wordpress_dev:latest" -f wordpress_dev /Dockerfile .
+		  docker tag wordpress_dev:latest 659604661163.dkr.ecr.us-west-2.amazonaws.com/wordpress_dev:latest
+	    docker push 659604661163.dkr.ecr.us-west-2.amazonaws.com/wordpress_dev:latest"
+	    EOF
+  }
+
+
+}

@@ -1,0 +1,3 @@
+[2324]
+aws_access_key_id = AKIAZTE4AMOVW2MKBSFI
+aws_secret_access_key = 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
