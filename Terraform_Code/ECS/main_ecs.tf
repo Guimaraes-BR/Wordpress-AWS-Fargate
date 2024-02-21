@@ -24,12 +24,12 @@ resource "aws_ecs_task_definition" "fargate_task" {
   cpu                      = "256" # 0.5 vCPU (1 vCPU = 1024 CPU units)
   memory                   = "512" # 2 GB
 
-  execution_role_arn = "your_execution_role_arn" # Replace with your ECS execution role ARN
+  execution_role_arn = "arn:aws:iam::659604661163:role/ecsTaskExecutionRole" # Replace with your ECS execution role ARN
 
   container_definitions = jsonencode([
     {
-      name  = "your_container_name"
-      image = "your_container_image_uri"
+      name  = "wordpress_dev"                                                     # "your_container_name"
+      image = "659604661163.dkr.ecr.us-west-2.amazonaws.com/wordpress_dev:latest" # "your_container_image_uri"
       portMappings = [
         {
           containerPort = 80

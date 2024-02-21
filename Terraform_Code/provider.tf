@@ -10,6 +10,13 @@ terraform {
     }
 
   }
+
+  backend "s3" {
+    bucket = "backendterraformguimaraes"
+    key    = "backendterraform/terraform.tfstate"
+    region = "us-west-2"
+  }
+
 }
 /*
 provider "aws" {
